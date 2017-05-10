@@ -54,25 +54,24 @@
 		// stores the snapshot of trainName from the database
 		// and stores it in a variable
 		var trainName = childSnapshot.val().trainName
-			console.log("Train Name: " + trainName)
+			
 		// stores the snapshot of trainDest from the database
 		// and stores it in a variable
 		var trainDest = childSnapshot.val().trainDest
-			console.log("Train Destination :" + trainDest)
+			
 		// stores the snapshot of trainTime from the database
 		// and stores it in a variable
 		var trainTime = childSnapshot.val().trainTime
-			console.log("Train Time : " + trainTime)
+			
 		// stores the snapshot of trainFreq from the database
 		// and stores it in a variable
 		var trainFreq = childSnapshot.val().trainFreq
-			console.log("Train Frequency : " + trainFreq)
+			
 
 		// grabs the current time via moment.js and 
 		// stores it in a variable
 		var currentTime = moment();
-			console.log("CURRENT TIME: " + moment(currentTime).format("HH:mm"));
-
+			
 		// parses the string in the trainFreq variable and 
 		// retuns it as an integer, and then stores it in
 		// a variable
@@ -81,33 +80,24 @@
 		// grabs the trainTime variable, pushes it back 
 		// 1 year to insure it comes becore currentTime
 		var trainTimeConverted = moment(trainTime, "HH:mm").subtract(1, "years");
-			console.log(trainTimeConverted)
+			
 		
-		// grabs the trainTimeConverted variable, formats it
-		// and stores it in a new variable
-		var newTrainTime = moment(trainTimeConverted).format('HH:mm');
-			console.log("TRAIN TIME : " + trainTime);
-
-		// grabs newTrainTime variable, pushes it back 1 year
-		// to ensure it comes becore newTrainTime
-		var convertTime = moment(newTrainTime, 'HH:mm').subtract(1, 'years');
-
-		// caculates difference between the time stored in convertTime
+		// caculates difference between the time stored in trainTimeConverted
 		// and the current time and stores it in a variable
-		var diffTime = moment().diff(moment(convertTime), 'minutes');
-			console.log("DIFFERENCE IN TIME: " + diffTime);
+		var diffTime = moment().diff(moment(trainTimeConverted), 'minutes');
+			
 		// calculates remainder between diffTime and the freqInt
 		// variable, which stores the frequency of train arivals in minutes
 		var tRemainder = diffTime % freqInt;
-			console.log("TIME REMAINING: " + tRemainder);
+			
 		// calculates the difference beyween tRemainder and the frequency
 		// train arivals
 		var minsAway = freqInt - tRemainder;
-			console.log("MINUTES UNTIL NEXT TRAIN: " + minsAway);
+			
 		// stores the minsAway variable and formats it to HH:mm 
 		// to receive it as an actual time on the clock 
 		var nextTrain = moment().add(minsAway, 'minutes');
-			console.log("ARRIVAL TIME: " + moment(nextTrain).format('HH:mm'));
+			
 
 		// appends the variables to the table with the id of "trainContainer"
 		$("#trainContainer").append(
